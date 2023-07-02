@@ -30,25 +30,27 @@ namespace ProjectManager.Forms
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtContent = new Guna.UI2.WinForms.Guna2TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.guna2ComboBox4 = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.cbOwner = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.cbAuthor = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.guna2DateTimePicker2 = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.dtpCreateDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.guna2ComboBox2 = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.cbStatus = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.guna2DateTimePicker1 = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.dtpDueDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.guna2ComboBox3 = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.cbPriority = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.lblProjectName = new System.Windows.Forms.Label();
+            this.btnUpdate = new Guna.UI2.WinForms.Guna2Button();
+            this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -58,35 +60,35 @@ namespace ProjectManager.Forms
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.guna2TextBox1);
+            this.panel1.Controls.Add(this.txtContent);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 370);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 30, 3, 3);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5, 15, 5, 15);
-            this.panel1.Size = new System.Drawing.Size(800, 79);
+            this.panel1.Size = new System.Drawing.Size(818, 79);
             this.panel1.TabIndex = 13;
             // 
-            // guna2TextBox1
+            // txtContent
             // 
-            this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox1.DefaultText = "";
-            this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Location = new System.Drawing.Point(103, 15);
-            this.guna2TextBox1.Name = "guna2TextBox1";
-            this.guna2TextBox1.PasswordChar = '\0';
-            this.guna2TextBox1.PlaceholderText = "";
-            this.guna2TextBox1.SelectedText = "";
-            this.guna2TextBox1.Size = new System.Drawing.Size(640, 49);
-            this.guna2TextBox1.TabIndex = 1;
+            this.txtContent.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtContent.DefaultText = "";
+            this.txtContent.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtContent.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtContent.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtContent.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtContent.Dock = System.Windows.Forms.DockStyle.Left;
+            this.txtContent.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtContent.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtContent.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtContent.Location = new System.Drawing.Point(103, 15);
+            this.txtContent.Name = "txtContent";
+            this.txtContent.PasswordChar = '\0';
+            this.txtContent.PlaceholderText = "";
+            this.txtContent.SelectedText = "";
+            this.txtContent.Size = new System.Drawing.Size(640, 49);
+            this.txtContent.TabIndex = 1;
             // 
             // label2
             // 
@@ -99,46 +101,34 @@ namespace ProjectManager.Forms
             this.label2.Text = "Task Content:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label1
-            // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Location = new System.Drawing.Point(0, 316);
-            this.label1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 30);
-            this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(10);
-            this.label1.Size = new System.Drawing.Size(800, 54);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Proje Adı";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.guna2ComboBox4);
+            this.panel5.Controls.Add(this.cbOwner);
             this.panel5.Controls.Add(this.label8);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 237);
             this.panel5.Margin = new System.Windows.Forms.Padding(3, 30, 3, 3);
             this.panel5.Name = "panel5";
             this.panel5.Padding = new System.Windows.Forms.Padding(5, 15, 5, 15);
-            this.panel5.Size = new System.Drawing.Size(800, 79);
+            this.panel5.Size = new System.Drawing.Size(818, 79);
             this.panel5.TabIndex = 17;
             // 
-            // guna2ComboBox4
+            // cbOwner
             // 
-            this.guna2ComboBox4.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ComboBox4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.guna2ComboBox4.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.guna2ComboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.guna2ComboBox4.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox4.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox4.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.guna2ComboBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.guna2ComboBox4.ItemHeight = 30;
-            this.guna2ComboBox4.Location = new System.Drawing.Point(103, 15);
-            this.guna2ComboBox4.Margin = new System.Windows.Forms.Padding(3, 13, 3, 3);
-            this.guna2ComboBox4.Name = "guna2ComboBox4";
-            this.guna2ComboBox4.Size = new System.Drawing.Size(640, 36);
-            this.guna2ComboBox4.TabIndex = 4;
+            this.cbOwner.BackColor = System.Drawing.Color.Transparent;
+            this.cbOwner.Dock = System.Windows.Forms.DockStyle.Left;
+            this.cbOwner.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbOwner.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbOwner.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbOwner.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbOwner.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cbOwner.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cbOwner.ItemHeight = 30;
+            this.cbOwner.Location = new System.Drawing.Point(103, 15);
+            this.cbOwner.Margin = new System.Windows.Forms.Padding(3, 13, 3, 3);
+            this.cbOwner.Name = "cbOwner";
+            this.cbOwner.Size = new System.Drawing.Size(640, 36);
+            this.cbOwner.TabIndex = 4;
             // 
             // label8
             // 
@@ -153,34 +143,34 @@ namespace ProjectManager.Forms
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.guna2ComboBox1);
+            this.panel2.Controls.Add(this.cbAuthor);
             this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.guna2DateTimePicker2);
+            this.panel2.Controls.Add(this.dtpCreateDate);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 158);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 30, 3, 3);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(5, 15, 5, 15);
-            this.panel2.Size = new System.Drawing.Size(800, 79);
+            this.panel2.Size = new System.Drawing.Size(818, 79);
             this.panel2.TabIndex = 14;
             // 
-            // guna2ComboBox1
+            // cbAuthor
             // 
-            this.guna2ComboBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ComboBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.guna2ComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.guna2ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.guna2ComboBox1.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.guna2ComboBox1.ItemHeight = 30;
-            this.guna2ComboBox1.Location = new System.Drawing.Point(425, 15);
-            this.guna2ComboBox1.Margin = new System.Windows.Forms.Padding(3, 13, 3, 3);
-            this.guna2ComboBox1.Name = "guna2ComboBox1";
-            this.guna2ComboBox1.Size = new System.Drawing.Size(318, 36);
-            this.guna2ComboBox1.TabIndex = 3;
+            this.cbAuthor.BackColor = System.Drawing.Color.Transparent;
+            this.cbAuthor.Dock = System.Windows.Forms.DockStyle.Left;
+            this.cbAuthor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbAuthor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbAuthor.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbAuthor.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbAuthor.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cbAuthor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cbAuthor.ItemHeight = 30;
+            this.cbAuthor.Location = new System.Drawing.Point(425, 15);
+            this.cbAuthor.Margin = new System.Windows.Forms.Padding(3, 13, 3, 3);
+            this.cbAuthor.Name = "cbAuthor";
+            this.cbAuthor.Size = new System.Drawing.Size(318, 36);
+            this.cbAuthor.TabIndex = 3;
             // 
             // label4
             // 
@@ -193,20 +183,20 @@ namespace ProjectManager.Forms
             this.label4.Text = "Task Author: ";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // guna2DateTimePicker2
+            // dtpCreateDate
             // 
-            this.guna2DateTimePicker2.Checked = true;
-            this.guna2DateTimePicker2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.guna2DateTimePicker2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(246)))), ((int)(((byte)(249)))));
-            this.guna2DateTimePicker2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2DateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.guna2DateTimePicker2.Location = new System.Drawing.Point(103, 15);
-            this.guna2DateTimePicker2.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.guna2DateTimePicker2.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.guna2DateTimePicker2.Name = "guna2DateTimePicker2";
-            this.guna2DateTimePicker2.Size = new System.Drawing.Size(224, 49);
-            this.guna2DateTimePicker2.TabIndex = 1;
-            this.guna2DateTimePicker2.Value = new System.DateTime(2023, 7, 1, 20, 33, 41, 80);
+            this.dtpCreateDate.Checked = true;
+            this.dtpCreateDate.Dock = System.Windows.Forms.DockStyle.Left;
+            this.dtpCreateDate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(246)))), ((int)(((byte)(249)))));
+            this.dtpCreateDate.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dtpCreateDate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dtpCreateDate.Location = new System.Drawing.Point(103, 15);
+            this.dtpCreateDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpCreateDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtpCreateDate.Name = "dtpCreateDate";
+            this.dtpCreateDate.Size = new System.Drawing.Size(224, 49);
+            this.dtpCreateDate.TabIndex = 1;
+            this.dtpCreateDate.Value = new System.DateTime(2023, 7, 1, 20, 33, 41, 80);
             // 
             // label3
             // 
@@ -221,34 +211,39 @@ namespace ProjectManager.Forms
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.guna2ComboBox2);
+            this.panel3.Controls.Add(this.cbStatus);
             this.panel3.Controls.Add(this.label5);
-            this.panel3.Controls.Add(this.guna2DateTimePicker1);
+            this.panel3.Controls.Add(this.dtpDueDate);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 79);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 30, 3, 3);
             this.panel3.Name = "panel3";
             this.panel3.Padding = new System.Windows.Forms.Padding(5, 15, 5, 15);
-            this.panel3.Size = new System.Drawing.Size(800, 79);
+            this.panel3.Size = new System.Drawing.Size(818, 79);
             this.panel3.TabIndex = 15;
             // 
-            // guna2ComboBox2
+            // cbStatus
             // 
-            this.guna2ComboBox2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ComboBox2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.guna2ComboBox2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.guna2ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.guna2ComboBox2.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox2.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox2.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.guna2ComboBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.guna2ComboBox2.ItemHeight = 30;
-            this.guna2ComboBox2.Location = new System.Drawing.Point(425, 15);
-            this.guna2ComboBox2.Margin = new System.Windows.Forms.Padding(3, 13, 3, 3);
-            this.guna2ComboBox2.Name = "guna2ComboBox2";
-            this.guna2ComboBox2.Size = new System.Drawing.Size(318, 36);
-            this.guna2ComboBox2.TabIndex = 3;
+            this.cbStatus.BackColor = System.Drawing.Color.Transparent;
+            this.cbStatus.Dock = System.Windows.Forms.DockStyle.Left;
+            this.cbStatus.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStatus.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbStatus.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbStatus.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cbStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cbStatus.ItemHeight = 30;
+            this.cbStatus.Items.AddRange(new object[] {
+            "Not Started",
+            "In Progress",
+            "Waiting",
+            "Done"});
+            this.cbStatus.Location = new System.Drawing.Point(425, 15);
+            this.cbStatus.Margin = new System.Windows.Forms.Padding(3, 13, 3, 3);
+            this.cbStatus.Name = "cbStatus";
+            this.cbStatus.Size = new System.Drawing.Size(318, 36);
+            this.cbStatus.TabIndex = 3;
             // 
             // label5
             // 
@@ -261,20 +256,20 @@ namespace ProjectManager.Forms
             this.label5.Text = "Task Status: ";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // guna2DateTimePicker1
+            // dtpDueDate
             // 
-            this.guna2DateTimePicker1.Checked = true;
-            this.guna2DateTimePicker1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.guna2DateTimePicker1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(246)))), ((int)(((byte)(249)))));
-            this.guna2DateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.guna2DateTimePicker1.Location = new System.Drawing.Point(103, 15);
-            this.guna2DateTimePicker1.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.guna2DateTimePicker1.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.guna2DateTimePicker1.Name = "guna2DateTimePicker1";
-            this.guna2DateTimePicker1.Size = new System.Drawing.Size(224, 49);
-            this.guna2DateTimePicker1.TabIndex = 1;
-            this.guna2DateTimePicker1.Value = new System.DateTime(2023, 7, 1, 20, 33, 41, 80);
+            this.dtpDueDate.Checked = true;
+            this.dtpDueDate.Dock = System.Windows.Forms.DockStyle.Left;
+            this.dtpDueDate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(246)))), ((int)(((byte)(249)))));
+            this.dtpDueDate.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dtpDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dtpDueDate.Location = new System.Drawing.Point(103, 15);
+            this.dtpDueDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpDueDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtpDueDate.Name = "dtpDueDate";
+            this.dtpDueDate.Size = new System.Drawing.Size(224, 49);
+            this.dtpDueDate.TabIndex = 1;
+            this.dtpDueDate.Value = new System.DateTime(2023, 7, 1, 20, 33, 41, 80);
             // 
             // label6
             // 
@@ -289,32 +284,36 @@ namespace ProjectManager.Forms
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.guna2ComboBox3);
+            this.panel4.Controls.Add(this.cbPriority);
             this.panel4.Controls.Add(this.label7);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 30, 3, 3);
             this.panel4.Name = "panel4";
             this.panel4.Padding = new System.Windows.Forms.Padding(5, 15, 5, 15);
-            this.panel4.Size = new System.Drawing.Size(800, 79);
+            this.panel4.Size = new System.Drawing.Size(818, 79);
             this.panel4.TabIndex = 16;
             // 
-            // guna2ComboBox3
+            // cbPriority
             // 
-            this.guna2ComboBox3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ComboBox3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.guna2ComboBox3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.guna2ComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.guna2ComboBox3.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox3.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox3.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.guna2ComboBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.guna2ComboBox3.ItemHeight = 30;
-            this.guna2ComboBox3.Location = new System.Drawing.Point(103, 15);
-            this.guna2ComboBox3.Margin = new System.Windows.Forms.Padding(3, 13, 3, 3);
-            this.guna2ComboBox3.Name = "guna2ComboBox3";
-            this.guna2ComboBox3.Size = new System.Drawing.Size(640, 36);
-            this.guna2ComboBox3.TabIndex = 4;
+            this.cbPriority.BackColor = System.Drawing.Color.Transparent;
+            this.cbPriority.Dock = System.Windows.Forms.DockStyle.Left;
+            this.cbPriority.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbPriority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPriority.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbPriority.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbPriority.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cbPriority.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cbPriority.ItemHeight = 30;
+            this.cbPriority.Items.AddRange(new object[] {
+            "Low",
+            "Medium",
+            "High"});
+            this.cbPriority.Location = new System.Drawing.Point(103, 15);
+            this.cbPriority.Margin = new System.Windows.Forms.Padding(3, 13, 3, 3);
+            this.cbPriority.Name = "cbPriority";
+            this.cbPriority.Size = new System.Drawing.Size(640, 36);
+            this.cbPriority.TabIndex = 4;
             // 
             // label7
             // 
@@ -327,20 +326,67 @@ namespace ProjectManager.Forms
             this.label7.Text = "Task Priority:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // lblProjectName
+            // 
+            this.lblProjectName.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblProjectName.Location = new System.Drawing.Point(0, 316);
+            this.lblProjectName.Margin = new System.Windows.Forms.Padding(3, 0, 3, 30);
+            this.lblProjectName.Name = "lblProjectName";
+            this.lblProjectName.Padding = new System.Windows.Forms.Padding(10);
+            this.lblProjectName.Size = new System.Drawing.Size(818, 54);
+            this.lblProjectName.TabIndex = 12;
+            this.lblProjectName.Text = "Proje Adı";
+            this.lblProjectName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnUpdate.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnUpdate.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnUpdate.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnUpdate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
+            this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnUpdate.ForeColor = System.Drawing.Color.Black;
+            this.btnUpdate.Location = new System.Drawing.Point(186, 479);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(180, 45);
+            this.btnUpdate.TabIndex = 18;
+            this.btnUpdate.Text = "Update Task";
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnDelete.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnDelete.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnDelete.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnDelete.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(178)))), ((int)(((byte)(191)))));
+            this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnDelete.ForeColor = System.Drawing.Color.Black;
+            this.btnDelete.Location = new System.Drawing.Point(407, 479);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(180, 45);
+            this.btnDelete.TabIndex = 19;
+            this.btnDelete.Text = "Delete Task";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // FormTaskDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(246)))), ((int)(((byte)(249)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(818, 553);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblProjectName);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel4);
             this.Name = "FormTaskDetail";
             this.Text = "FormTaskDetail";
+            this.Load += new System.EventHandler(this.FormTaskDetail_Load);
             this.panel1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -353,24 +399,26 @@ namespace ProjectManager.Forms
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private Guna.UI2.WinForms.Guna2TextBox txtContent;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel5;
-        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox4;
+        private Guna.UI2.WinForms.Guna2ComboBox cbOwner;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel2;
-        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1;
+        private Guna.UI2.WinForms.Guna2ComboBox cbAuthor;
         private System.Windows.Forms.Label label4;
-        private Guna.UI2.WinForms.Guna2DateTimePicker guna2DateTimePicker2;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dtpCreateDate;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel3;
-        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox2;
+        private Guna.UI2.WinForms.Guna2ComboBox cbStatus;
         private System.Windows.Forms.Label label5;
-        private Guna.UI2.WinForms.Guna2DateTimePicker guna2DateTimePicker1;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dtpDueDate;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel4;
-        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox3;
+        private Guna.UI2.WinForms.Guna2ComboBox cbPriority;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblProjectName;
+        private Guna.UI2.WinForms.Guna2Button btnUpdate;
+        private Guna.UI2.WinForms.Guna2Button btnDelete;
     }
 }

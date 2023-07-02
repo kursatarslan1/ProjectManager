@@ -72,6 +72,7 @@ namespace ProjectManager
                 user.Photo = (byte[])dr["Photo"];
                 user.PhoneNumber = Convert.ToString(dr["PhoneNumber"]);
             }
+            dr.Close();
             return user;
         }
 
@@ -122,7 +123,7 @@ namespace ProjectManager
         {
             con.Close();
             con.Open();
-            cmd = new SqlCommand("SELECT * FROM Tasks WHERE TASK_OWNER=@TASK_OWNER", con);
+            cmd = new SqlCommand("SELECT * FROM Tasks WHERE TASK_OWNER=@TASK_OWNER AND NOT TASK_STATUS = 'Done'", con);
             cmd.Parameters.AddWithValue("@TASK_OWNER", user);
             SqlDataReader dr = cmd.ExecuteReader();
             List<Tasks> tasks = new List<Tasks>();
@@ -143,6 +144,7 @@ namespace ProjectManager
 
 
             }
+            dr.Close();
             con.Close();
             return tasks;
         }
@@ -182,6 +184,7 @@ namespace ProjectManager
 
                 });
             }
+            reader.Close();
             con.Close();
             return projects;
         }
@@ -207,6 +210,7 @@ namespace ProjectManager
             }
             
         }
+
 
         public bool CreateTask(Tasks task)
         {
@@ -239,6 +243,55 @@ namespace ProjectManager
                 return false;
             }
         }
+        public void UpdateTask(Tasks task)
+        {
+            try
+            {
+                string query = "UPDATE Tasks SET TASK_NAME=@TASK_NAME, TASK_CREATE_DATE=@TASK_CREATE_DATE, TASK_AUTHOR=@TASK_AUTHOR, TASK_STATUS=@TASK_STATUS, TASK_DUE_DATE=@TASK_DUE_DATE, TASK_PRIORITY=@TASK_PRIORITY, TASK_OWNER=@TASK_OWNER,TASK_PROJECT=@TASK_PROJECT WHERE TASK_ID=@TASK_ID";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@TASK_ID", task.TaskId);
+                cmd.Parameters.AddWithValue("@TASK_NAME", task.TaskName);
+                cmd.Parameters.AddWithValue("@TASK_CREATE_DATE", task.TaskCreateDate);
+                cmd.Parameters.AddWithValue("@TASK_AUTHOR", task.TaskAuthor);
+                cmd.Parameters.AddWithValue("@TASK_STATUS", task.TaskStatus);
+                cmd.Parameters.AddWithValue("@TASK_DUE_DATE", task.TaskDueDate);
+                cmd.Parameters.AddWithValue("@TASK_PRIORITY", task.TaskPriority);
+                cmd.Parameters.AddWithValue("@TASK_OWNER", task.TaskOwner);
+                cmd.Parameters.AddWithValue("@TASK_PROJECT", task.TaskProject);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+                MessageBox.Show("Task Updated Successfully.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                con.Close();
+            }
+        }
+        public void DeleteTask(Tasks task)
+        {
+            try
+            {
+                string deleteQuery = "DELETE FROM Tasks WHERE TASK_ID = @TASK_ID";
+                string projectQuery = "UPDATE Project SET TASK_COUNT = TASK_COUNT - 1 WHERE PROJECT_NAME = @TASK_PROJECT";
+                SqlCommand cmd = new SqlCommand(deleteQuery, con);
+                SqlCommand cmd2 = new SqlCommand(projectQuery, con);
+                cmd.Parameters.AddWithValue("@TASK_ID", task.TaskId);
+                cmd2.Parameters.AddWithValue("@TASK_PROJECT", task.TaskProject);
+                con.Open();
+                cmd2.ExecuteNonQuery();
+                cmd.ExecuteNonQuery();
+                con.Close();
+                MessageBox.Show("Task Deleted Successfully.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                con.Close();
+            }
+        }
 
         public DataTable LoadData()
         {
@@ -267,5 +320,34 @@ namespace ProjectManager
             cmd.ExecuteNonQuery();
             con.Close();
         }
+
+        public Tasks GetTaskDetail(string TaskContent)
+        {
+            con.Open();
+            string query = "SELECT * FROM Tasks WHERE TASK_NAME = @TASK_NAME";
+            SqlCommand cmd = new SqlCommand(query, con);
+            cmd.Parameters.AddWithValue("@TASK_NAME", TaskContent);
+            SqlDataReader reader = cmd.ExecuteReader();
+            Tasks task = new Tasks();
+            while (reader.Read())
+            {
+                task.TaskId = Convert.ToInt32(reader["TASK_ID"]);
+                task.TaskName = Convert.ToString(reader["TASK_NAME"]);
+                task.TaskCreateDate = Convert.ToDateTime(reader["TASK_CREATE_DATE"]);
+                task.TaskAuthor = Convert.ToString(reader["TASK_AUTHOR"]);
+                task.TaskStatus = Convert.ToString(reader["TASK_STATUS"]);
+                task.TaskDueDate = Convert.ToDateTime(reader["TASK_DUE_DATE"]);
+                task.TaskPriority = Convert.ToString(reader["TASK_PRIORITY"]);
+                task.TaskOwner = Convert.ToString(reader["TASK_OWNER"]);
+                task.TaskProject = Convert.ToString(reader["TASK_PROJECT"]);
+
+            }
+            reader.Close();
+            cmd.ExecuteNonQuery();
+            
+            con.Close();
+            return task;
+        }
+
     }
 }

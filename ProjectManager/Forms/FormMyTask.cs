@@ -24,8 +24,12 @@ namespace ProjectManager.Forms
             Password = password;
             flowLayoutPanel1.AutoScroll = true;
         }
-
         private void FormMyTask_Load(object sender, EventArgs e)
+        {
+            LoadTasks();
+        }
+
+        public void LoadTasks()
         {
             user.Username = Username;
             user = sqlHelper.GetData(user);
@@ -36,14 +40,12 @@ namespace ProjectManager.Forms
             foreach (var tasks in taskler)
             {
                 btnTask btnTask = new btnTask();
-                //btnTask.Dock = DockStyle.Top;
                 btnTask.TaskProject = tasks.TaskProject;
                 btnTask.TaskContent = tasks.TaskName;
                 btnTask.TaskAuthor = "Task Author: " + tasks.TaskAuthor;
                 btnTask.TaskStatus = "Task Status: " + tasks.TaskStatus;
                 btnTask.TaskDueDate = "Task Due Date: " + Convert.ToString(tasks.TaskDueDate);
                 btnTask.TaskPriority = tasks.TaskPriority;
-                //btnTask.Size = new Size(btnTask.Size.Width, 450);
                 flowLayoutPanel1.Controls.Add(btnTask);
             }
         }

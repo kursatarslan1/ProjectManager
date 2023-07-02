@@ -6,13 +6,16 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProjectManager.Class;
 
 namespace ProjectManager.CustomCard
 {
     public partial class btnTask : UserControl
     {
+        Tasks task = new Tasks();
+        SqlHelper sqlHelper = new SqlHelper();
+
         public string ItemId { get; set; }
         public string TaskProject
         {
@@ -47,11 +50,13 @@ namespace ProjectManager.CustomCard
         public btnTask()
         {
             InitializeComponent();
+            
         }
         private void lblTaskContent_Click(object sender, EventArgs e)
         {
-            
-            
+            task = sqlHelper.GetTaskDetail(TaskContent);
+            FormTaskDetail form = new FormTaskDetail(task);
+            form.Show();
         }
     }
 }
