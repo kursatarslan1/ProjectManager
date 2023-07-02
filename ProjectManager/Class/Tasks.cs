@@ -17,5 +17,6 @@ namespace ProjectManager.Class
         public string TaskPriority { get; set; }
         public string TaskOwner { get; set; }
         public string TaskProject { get; set; }
+        public string TaskComment { get; set; }
     }
 }

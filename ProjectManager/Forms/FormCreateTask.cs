@@ -23,6 +23,7 @@ namespace ProjectManager.Forms
         private void FormCreateTask_Load(object sender, EventArgs e)
         {
             this.createTask1.Author = Author;
+            this.createTask1.User.Username = Author;
         }
     }
 }

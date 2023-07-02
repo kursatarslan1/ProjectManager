@@ -230,6 +230,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\Comment.cs" />
     <Compile Include="Class\Projects.cs" />
     <Compile Include="Class\Tasks.cs" />
     <Compile Include="Class\User.cs" />
@@ -250,6 +251,12 @@
     </Compile>
     <Compile Include="CustomCard\btnTask.Designer.cs">
       <DependentUpon>btnTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomCard\CommentCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomCard\CommentCard.Designer.cs">
+      <DependentUpon>CommentCard.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomCard\CreateTask.cs">
       <SubType>UserControl</SubType>
@@ -328,6 +335,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomCard\btnTask.resx">
       <DependentUpon>btnTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomCard\CommentCard.resx">
+      <DependentUpon>CommentCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomCard\CreateTask.resx">
       <DependentUpon>CreateTask.cs</DependentUpon>

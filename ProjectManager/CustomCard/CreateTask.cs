@@ -16,10 +16,12 @@ namespace ProjectManager.CustomCard
         Tasks task = new Tasks();
         SqlHelper sqlHelper = new SqlHelper();
         bool checkCreate;
+
         public CreateTask()
         {
             InitializeComponent();
         }
+        public User User = new User();
         public int TaskId { get; set; }
         public string Author { get; set; }
         public string SelectProject
@@ -72,7 +74,8 @@ namespace ProjectManager.CustomCard
                 task.TaskPriority = SelectTaskPriority;
                 task.TaskOwner = SelectTaskOwner;
                 task.TaskProject = SelectProject;
-                checkCreate = sqlHelper.CreateTask(task);
+                task.TaskComment = SelectTaskComment;
+                checkCreate = sqlHelper.CreateTask(task,User);
                 if (checkCreate)
                     btnClear.PerformClick();
             }

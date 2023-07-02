@@ -212,14 +212,19 @@ namespace ProjectManager
         }
 
 
-        public bool CreateTask(Tasks task)
+        public bool CreateTask(Tasks task, User user)
         {
             try
             {
                 string createQuery = "INSERT INTO Tasks (TASK_NAME, TASK_CREATE_DATE, TASK_AUTHOR,TASK_STATUS,TASK_DUE_DATE,TASK_PRIORITY,TASK_OWNER,TASK_PROJECT) VALUES (@TASK_NAME, @TASK_CREATE_DATE, @TASK_AUTHOR, @TASK_STATUS, @TASK_DUE_DATE, @TASK_PRIORITY, @TASK_OWNER, @TASK_PROJECT)";
                 string projectQuery = "UPDATE Project SET TASK_COUNT = TASK_COUNT + 1 WHERE PROJECT_NAME = @TASK_PROJECT";
+                string commentQuery = "INSERT INTO Comments (COMMENT_TASK,COMMENT,COMMENT_OWNER) VALUES(@COMMENT_TASK,@COMMENT,@COMMENT_OWNER)";
                 SqlCommand cmd = new SqlCommand(createQuery, con);
                 SqlCommand cmd2 = new SqlCommand(projectQuery, con);
+                SqlCommand cmd3 = new SqlCommand(commentQuery, con);
+                cmd3.Parameters.AddWithValue("@COMMENT_TASK", task.TaskName);
+                cmd3.Parameters.AddWithValue("@COMMENT", task.TaskComment);
+                cmd3.Parameters.AddWithValue("@COMMENT_OWNER", user.Username);
                 cmd2.Parameters.AddWithValue("@TASK_PROJECT", task.TaskProject);
                 cmd.Parameters.AddWithValue("@TASK_NAME", task.TaskName);
                 cmd.Parameters.AddWithValue("@TASK_CREATE_DATE", task.TaskCreateDate);
@@ -232,6 +237,7 @@ namespace ProjectManager
                 con.Open();
                 cmd.ExecuteNonQuery();
                 cmd2.ExecuteNonQuery();
+                cmd3.ExecuteNonQuery();
                 con.Close();
                 MessageBox.Show("Task created Successfully.","Info",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 return true;
@@ -243,12 +249,17 @@ namespace ProjectManager
                 return false;
             }
         }
-        public void UpdateTask(Tasks task)
+        public void UpdateTask(Tasks task, User user)
         {
             try
             {
                 string query = "UPDATE Tasks SET TASK_NAME=@TASK_NAME, TASK_CREATE_DATE=@TASK_CREATE_DATE, TASK_AUTHOR=@TASK_AUTHOR, TASK_STATUS=@TASK_STATUS, TASK_DUE_DATE=@TASK_DUE_DATE, TASK_PRIORITY=@TASK_PRIORITY, TASK_OWNER=@TASK_OWNER,TASK_PROJECT=@TASK_PROJECT WHERE TASK_ID=@TASK_ID";
+                string commentQuery = "INSERT INTO Comments (COMMENT_TASK,COMMENT,COMMENT_OWNER) VALUES(@COMMENT_TASK,@COMMENT,@COMMENT_OWNER)";
                 SqlCommand cmd = new SqlCommand(query, con);
+                SqlCommand cmd2 = new SqlCommand(commentQuery, con);
+                cmd2.Parameters.AddWithValue("@COMMENT_TASK", task.TaskName);
+                cmd2.Parameters.AddWithValue("@COMMENT", task.TaskComment);
+                cmd2.Parameters.AddWithValue("@COMMENT_OWNER", user.Username);
                 cmd.Parameters.AddWithValue("@TASK_ID", task.TaskId);
                 cmd.Parameters.AddWithValue("@TASK_NAME", task.TaskName);
                 cmd.Parameters.AddWithValue("@TASK_CREATE_DATE", task.TaskCreateDate);
@@ -259,6 +270,7 @@ namespace ProjectManager
                 cmd.Parameters.AddWithValue("@TASK_OWNER", task.TaskOwner);
                 cmd.Parameters.AddWithValue("@TASK_PROJECT", task.TaskProject);
                 con.Open();
+                cmd2.ExecuteNonQuery();
                 cmd.ExecuteNonQuery();
                 con.Close();
                 MessageBox.Show("Task Updated Successfully.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -347,6 +359,28 @@ namespace ProjectManager
             
             con.Close();
             return task;
+        }
+
+        public List<Comment> GetComment(Tasks tasks)
+        {
+            con.Open();
+            cmd = new SqlCommand("SELECT * FROM Comments WHERE COMMENT_TASK=@TASK_NAME", con);
+            cmd.Parameters.AddWithValue("@TASK_NAME", tasks.TaskName);
+            SqlDataReader reader = cmd.ExecuteReader();
+            List<Comment> comments = new List<Comment>();
+
+            while (reader.Read())
+            {
+                comments.Add(new Comment
+                {
+                    CommentContent = Convert.ToString(reader["COMMENT"]),
+                    CommentTask = Convert.ToString(reader["COMMENT_TASK"]),
+                    CommentOwner = Convert.ToString(reader["COMMENT_OWNER"])
+                });
+            }
+            reader.Close();
+            con.Close();
+            return comments;
         }
 
     }

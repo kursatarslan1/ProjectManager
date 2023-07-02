@@ -1,4 +1,6 @@
 ﻿
+using ProjectManager.Class;
+
 namespace ProjectManager.Forms
 {
     partial class FormCreateTask

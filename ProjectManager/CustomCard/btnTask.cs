@@ -15,7 +15,6 @@ namespace ProjectManager.CustomCard
     {
         Tasks task = new Tasks();
         SqlHelper sqlHelper = new SqlHelper();
-
         public string ItemId { get; set; }
         public string TaskProject
         {
@@ -47,15 +46,16 @@ namespace ProjectManager.CustomCard
             get { return lblTaskDueDate.Text; }
             set { lblTaskDueDate.Text = value; }
         }
-        public btnTask()
+        public btnTask(User user)
         {
             InitializeComponent();
-            
+            User = user;
         }
+        public User User { get; set; }
         private void lblTaskContent_Click(object sender, EventArgs e)
         {
             task = sqlHelper.GetTaskDetail(TaskContent);
-            FormTaskDetail form = new FormTaskDetail(task);
+            FormTaskDetail form = new FormTaskDetail(task,User);
             form.Show();
         }
     }

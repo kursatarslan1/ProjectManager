@@ -39,7 +39,7 @@ namespace ProjectManager.Forms
 
             foreach (var tasks in taskler)
             {
-                btnTask btnTask = new btnTask();
+                btnTask btnTask = new btnTask(user);
                 btnTask.TaskProject = tasks.TaskProject;
                 btnTask.TaskContent = tasks.TaskName;
                 btnTask.TaskAuthor = "Task Author: " + tasks.TaskAuthor;

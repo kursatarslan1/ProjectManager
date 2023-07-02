@@ -1,4 +1,5 @@
 ﻿using ProjectManager.Class;
+using ProjectManager.CustomCard;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,15 +15,21 @@ namespace ProjectManager.Forms
     public partial class FormTaskDetail : Form
     {
         Tasks tasks = new Tasks();
+        Comment comment = new Comment();
         SqlHelper sqlHelper = new SqlHelper();
-        public FormTaskDetail(Tasks task)
+        public FormTaskDetail(Tasks task, User user)
         {
             InitializeComponent();
             tasker = task;
+            this.AutoScroll = true;
+            User = user;
         }
+        public User User { get; set; }
         public Tasks tasker { get; set; }
         private void FormTaskDetail_Load(object sender, EventArgs e)
         {
+
+            
             List<User> users = new List<User>();
             users = sqlHelper.GetUsers();
             foreach(var item in users)
@@ -40,6 +47,20 @@ namespace ProjectManager.Forms
             lblProjectName.Text = tasks.TaskProject;
             txtContent.Text = tasks.TaskName;
 
+            List<Comment> comments = new List<Comment>();
+            comments = sqlHelper.GetComment(tasks);
+
+
+            foreach (var item in comments)
+            {
+                CommentCard commentCard = new CommentCard();
+                comment.CommentContent = item.CommentContent;
+                comment.CommentTask = item.CommentTask;
+                comment.CommentOwner = item.CommentOwner;
+                commentCard.CommentOwner = comment.CommentOwner;
+                commentCard.Comment = comment.CommentContent;
+                flowLayoutPanel1.Controls.Add(commentCard);
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -52,7 +73,10 @@ namespace ProjectManager.Forms
             tasks.TaskOwner = cbOwner.Text;
             tasks.TaskProject = lblProjectName.Text;
             tasks.TaskName = txtContent.Text;
-            sqlHelper.UpdateTask(tasks);
+            tasks.TaskComment = txtComment.Text;
+            comment.CommentOwner = User.Username;
+            comment.CommentContent = tasks.TaskComment;
+            sqlHelper.UpdateTask(tasks,User);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
