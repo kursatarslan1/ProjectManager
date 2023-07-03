@@ -18,8 +18,8 @@ namespace ProjectManager.CustomCard
         }
         public string Comment
         {
-            get { return lblComment.Text; }
-            set { lblComment.Text = value; }
+            get { return txtComment.Text; }
+            set { txtComment.Text = value; }
         }
         public string CommentOwner
         {

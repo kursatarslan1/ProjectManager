@@ -21,7 +21,7 @@ namespace ProjectManager.Forms
         {
             InitializeComponent();
             tasker = task;
-            this.AutoScroll = true;
+            flowLayoutPanel1.AutoScroll = true;
             User = user;
         }
         public User User { get; set; }
