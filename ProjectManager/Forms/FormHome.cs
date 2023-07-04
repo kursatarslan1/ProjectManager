@@ -23,12 +23,13 @@ namespace ProjectManager.Forms
         readonly string Username, Password;
         SqlHelper sqlHelper = new SqlHelper();
         User user = new User();
+        
+        public Tasks task { get; set; }
         public FormHome(string username, string password)
         {
             Username = username;
             Password = password;
             InitializeComponent();
-            flowLayoutPanel1.AutoScroll = true;
             btnCloseChildForm.Visible = false;
         }
 
@@ -52,7 +53,10 @@ namespace ProjectManager.Forms
             }
             button2.Text = user.Role;
             pbUserImage.Image = byteArrayToImage(user.Photo);
+
+            this.WindowState = FormWindowState.Maximized;
         }
+
 
         private void pnlTopSide_MouseDown(object sender, MouseEventArgs e)
         {
@@ -119,6 +123,16 @@ namespace ProjectManager.Forms
             btnCloseChildForm.Visible = false;
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if(this.WindowState == FormWindowState.Normal) {
+                this.WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+        }
 
         private void OpenChildForm(Form childForm, object btnSender)
         {

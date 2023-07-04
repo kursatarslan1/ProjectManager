@@ -8,14 +8,17 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ProjectManager.Class;
+using Guna.UI2.WinForms;
 
 namespace ProjectManager.CustomCard
 {
+    public delegate void MyEventHandler(object source, Tasks t);
     public partial class btnTask : UserControl
     {
         Tasks task = new Tasks();
         SqlHelper sqlHelper = new SqlHelper();
-        public string ItemId { get; set; }
+
+        public event MyEventHandler OnShowTasks;
         public string TaskProject
         {
             get { return lblTaskProject.Text; }
@@ -55,8 +58,9 @@ namespace ProjectManager.CustomCard
         private void lblTaskContent_Click(object sender, EventArgs e)
         {
             task = sqlHelper.GetTaskDetail(TaskContent);
-            FormTaskDetail form = new FormTaskDetail(task,User);
-            form.Show();
+            OnShowTasks?.Invoke(this, this.task);
+
         }
+
     }
 }
