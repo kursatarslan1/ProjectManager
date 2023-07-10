@@ -29,8 +29,9 @@ namespace ProjectManager.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.components = new System.ComponentModel.Container();
             this.lblProjectName = new System.Windows.Forms.Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.cbPriority = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -56,6 +57,7 @@ namespace ProjectManager.Forms
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
             this.btnUpdate = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.flowLayoutPanel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -66,8 +68,21 @@ namespace ProjectManager.Forms
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
+            // lblProjectName
+            // 
+            this.lblProjectName.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblProjectName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblProjectName.Location = new System.Drawing.Point(3, 0);
+            this.lblProjectName.Name = "lblProjectName";
+            this.lblProjectName.Padding = new System.Windows.Forms.Padding(10);
+            this.lblProjectName.Size = new System.Drawing.Size(835, 54);
+            this.lblProjectName.TabIndex = 22;
+            this.lblProjectName.Text = "Proje Adı";
+            this.lblProjectName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.White;
             this.flowLayoutPanel1.Controls.Add(this.lblProjectName);
             this.flowLayoutPanel1.Controls.Add(this.panel4);
             this.flowLayoutPanel1.Controls.Add(this.panel3);
@@ -78,20 +93,10 @@ namespace ProjectManager.Forms
             this.flowLayoutPanel1.Controls.Add(this.guna2Panel1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(9, 10, 30, 30);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(856, 676);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(845, 680);
             this.flowLayoutPanel1.TabIndex = 0;
-            // 
-            // lblProjectName
-            // 
-            this.lblProjectName.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblProjectName.Location = new System.Drawing.Point(3, 0);
-            this.lblProjectName.Name = "lblProjectName";
-            this.lblProjectName.Padding = new System.Windows.Forms.Padding(10);
-            this.lblProjectName.Size = new System.Drawing.Size(835, 54);
-            this.lblProjectName.TabIndex = 22;
-            this.lblProjectName.Text = "Proje Adı";
-            this.lblProjectName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel4
             // 
@@ -336,6 +341,7 @@ namespace ProjectManager.Forms
             this.txtContent.Dock = System.Windows.Forms.DockStyle.Left;
             this.txtContent.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtContent.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtContent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(19)))), ((int)(((byte)(18)))));
             this.txtContent.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtContent.Location = new System.Drawing.Point(103, 15);
             this.txtContent.Name = "txtContent";
@@ -440,15 +446,21 @@ namespace ProjectManager.Forms
             this.btnUpdate.Text = "Update Task";
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
+            // guna2Elipse1
+            // 
+            this.guna2Elipse1.BorderRadius = 30;
+            this.guna2Elipse1.TargetControl = this.flowLayoutPanel1;
+            // 
             // FormTaskDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(246)))), ((int)(((byte)(249)))));
-            this.ClientSize = new System.Drawing.Size(856, 676);
+            this.ClientSize = new System.Drawing.Size(845, 680);
             this.Controls.Add(this.flowLayoutPanel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormTaskDetail";
-            this.Text = "FormTaskDetail";
+            this.Text = "Task Details";
             this.Load += new System.EventHandler(this.FormTaskDetail_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -463,9 +475,8 @@ namespace ProjectManager.Forms
         }
 
         #endregion
-
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label lblProjectName;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel panel4;
         private Guna.UI2.WinForms.Guna2ComboBox cbPriority;
         private System.Windows.Forms.Label label7;
@@ -491,5 +502,6 @@ namespace ProjectManager.Forms
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2Button btnDelete;
         private Guna.UI2.WinForms.Guna2Button btnUpdate;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
     }
 }

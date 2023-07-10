@@ -29,17 +29,16 @@ namespace ProjectManager.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.allTask1 = new ProjectManager.CustomCard.AllTask();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
-            // allTask1
+            // flowLayoutPanel1
             // 
-            this.allTask1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(246)))), ((int)(((byte)(249)))));
-            this.allTask1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.allTask1.Location = new System.Drawing.Point(0, 0);
-            this.allTask1.Name = "allTask1";
-            this.allTask1.Size = new System.Drawing.Size(1101, 515);
-            this.allTask1.TabIndex = 0;
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1101, 515);
+            this.flowLayoutPanel1.TabIndex = 0;
             // 
             // FormAllTask
             // 
@@ -47,16 +46,17 @@ namespace ProjectManager.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(246)))), ((int)(((byte)(249)))));
             this.ClientSize = new System.Drawing.Size(1101, 515);
-            this.Controls.Add(this.allTask1);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormAllTask";
-            this.Text = "FormAllTask";
+            this.Text = "All Task";
+            this.Load += new System.EventHandler(this.FormAllTask_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private CustomCard.AllTask allTask1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

@@ -57,9 +57,9 @@ namespace ProjectManager.CustomCard
         public User User { get; set; }
         private void lblTaskContent_Click(object sender, EventArgs e)
         {
-            task = sqlHelper.GetTaskDetail(TaskContent);
+            string OperationType = "406";
+            task = sqlHelper.GetTaskDetail(TaskContent, OperationType);
             OnShowTasks?.Invoke(this, this.task);
-
         }
 
     }

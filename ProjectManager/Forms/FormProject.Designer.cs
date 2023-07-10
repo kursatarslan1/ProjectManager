@@ -56,7 +56,7 @@ namespace ProjectManager.Forms
             this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormProject";
-            this.Text = "FormProject";
+            this.Text = "Projects";
             this.Load += new System.EventHandler(this.FormProject_Load);
             this.ResumeLayout(false);
 

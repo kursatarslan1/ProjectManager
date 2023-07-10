@@ -22,6 +22,7 @@ namespace ProjectManager.Forms
             InitializeComponent();
             tasker = task;
             flowLayoutPanel1.AutoScroll = true;
+            flowLayoutPanel1.VerticalScroll.Visible = false;
             User = user;
         }
         public User User { get; set; }
@@ -46,21 +47,7 @@ namespace ProjectManager.Forms
             cbOwner.Text = tasks.TaskOwner;
             lblProjectName.Text = tasks.TaskProject;
             txtContent.Text = tasks.TaskName;
-
-            List<Comment> comments = new List<Comment>();
-            comments = sqlHelper.GetComment(tasks);
-
-
-            foreach (var item in comments)
-            {
-                CommentCard commentCard = new CommentCard();
-                comment.CommentContent = item.CommentContent;
-                comment.CommentTask = item.CommentTask;
-                comment.CommentOwner = item.CommentOwner;
-                commentCard.CommentOwner = comment.CommentOwner;
-                commentCard.Comment = comment.CommentContent;
-                flowLayoutPanel1.Controls.Add(commentCard);
-            }
+            
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)

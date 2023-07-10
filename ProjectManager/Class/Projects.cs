@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectManager.Class
 {
-    class Projects
+    public class Projects
     {
         public int ProjectId { get; set; }
         public string ProjectName { get; set; }

@@ -23,7 +23,7 @@ namespace ProjectManager.Forms
         readonly string Username, Password;
         SqlHelper sqlHelper = new SqlHelper();
         User user = new User();
-        
+
         public Tasks task { get; set; }
         public FormHome(string username, string password)
         {
@@ -54,7 +54,6 @@ namespace ProjectManager.Forms
             button2.Text = user.Role;
             pbUserImage.Image = byteArrayToImage(user.Photo);
 
-            this.WindowState = FormWindowState.Maximized;
         }
 
 
@@ -79,15 +78,19 @@ namespace ProjectManager.Forms
         }
         private void btnAllTasks_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.FormAllTask(), sender);
+            OpenChildForm(new Forms.FormAllTask(user.Username, user.Password), sender);
         }
         private void btnProject_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.FormProject(), sender);
+            OpenChildForm(new Forms.FormProject(user.Username, user.Password), sender);
         }
         private void btnCreateProject_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.FormCreateProject(), sender);
+        }
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.FormSettings(user), sender);
         }
 
         public Image byteArrayToImage(byte[] byteArrayIn)
@@ -118,19 +121,24 @@ namespace ProjectManager.Forms
 
         private void Reset()
         {
+            UserDashboard userDashboard = new UserDashboard();
             lblTitle.Text = "T. Project Manager";
             currentButton = null;
             btnCloseChildForm.Visible = false;
+            flowLayoutPanel2.Controls.Clear();
+            flowLayoutPanel2.Controls.Add(userDashboard);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             if(this.WindowState == FormWindowState.Normal) {
                 this.WindowState = FormWindowState.Maximized;
+                this.guna2Elipse1.BorderRadius = 0;
             }
             else
             {
                 this.WindowState = FormWindowState.Normal;
+                this.guna2Elipse1.BorderRadius = 60;
             }
         }
 

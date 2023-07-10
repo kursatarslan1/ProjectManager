@@ -61,7 +61,7 @@ namespace ProjectManager.CustomCard
             // 
             this.lblTaskDueDate.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblTaskDueDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblTaskDueDate.ForeColor = System.Drawing.Color.Red;
+            this.lblTaskDueDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(39)))), ((int)(((byte)(190)))));
             this.lblTaskDueDate.Location = new System.Drawing.Point(0, 237);
             this.lblTaskDueDate.Name = "lblTaskDueDate";
             this.lblTaskDueDate.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
@@ -74,7 +74,7 @@ namespace ProjectManager.CustomCard
             // 
             this.lblTaskStatus.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblTaskStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblTaskStatus.ForeColor = System.Drawing.Color.Red;
+            this.lblTaskStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(39)))), ((int)(((byte)(190)))));
             this.lblTaskStatus.Location = new System.Drawing.Point(0, 180);
             this.lblTaskStatus.Name = "lblTaskStatus";
             this.lblTaskStatus.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
@@ -87,7 +87,7 @@ namespace ProjectManager.CustomCard
             // 
             this.lblTaskAuthor.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblTaskAuthor.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblTaskAuthor.ForeColor = System.Drawing.Color.Red;
+            this.lblTaskAuthor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(39)))), ((int)(((byte)(190)))));
             this.lblTaskAuthor.Location = new System.Drawing.Point(0, 123);
             this.lblTaskAuthor.Name = "lblTaskAuthor";
             this.lblTaskAuthor.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
@@ -113,7 +113,7 @@ namespace ProjectManager.CustomCard
             // 
             this.lblTaskPriority.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblTaskPriority.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblTaskPriority.ForeColor = System.Drawing.Color.LightCoral;
+            this.lblTaskPriority.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(107)))), ((int)(((byte)(147)))));
             this.lblTaskPriority.Location = new System.Drawing.Point(0, 345);
             this.lblTaskPriority.Name = "lblTaskPriority";
             this.lblTaskPriority.Padding = new System.Windows.Forms.Padding(5);
@@ -126,7 +126,7 @@ namespace ProjectManager.CustomCard
             // 
             this.lblTaskProject.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblTaskProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblTaskProject.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblTaskProject.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(39)))), ((int)(((byte)(190)))));
             this.lblTaskProject.Location = new System.Drawing.Point(0, 0);
             this.lblTaskProject.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblTaskProject.Name = "lblTaskProject";

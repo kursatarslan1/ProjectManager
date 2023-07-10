@@ -31,31 +31,31 @@ namespace ProjectManager.Forms
         {
             this.components = new System.ComponentModel.Container();
             this.pnlTopSide = new Guna.UI2.WinForms.Guna2Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnCloseChildForm = new Guna.UI2.WinForms.Guna2CircleButton();
-            this.button2 = new System.Windows.Forms.Button();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.pbUserImage = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnProject = new Guna.UI2.WinForms.Guna2Button();
             this.btnCreateProject = new Guna.UI2.WinForms.Guna2Button();
             this.btnCreateTask = new Guna.UI2.WinForms.Guna2Button();
             this.btnMyTasks = new Guna.UI2.WinForms.Guna2Button();
             this.btnAllTasks = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnSettings = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.pnlMiddle = new System.Windows.Forms.Panel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.pbUserImage = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.userDashboard1 = new ProjectManager.CustomCard.UserDashboard();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.pnlTopSide.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).BeginInit();
+            this.panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.pnlMiddle.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
-            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlTopSide
@@ -68,9 +68,48 @@ namespace ProjectManager.Forms
             this.pnlTopSide.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTopSide.Location = new System.Drawing.Point(0, 0);
             this.pnlTopSide.Name = "pnlTopSide";
-            this.pnlTopSide.Size = new System.Drawing.Size(1078, 136);
+            this.pnlTopSide.Size = new System.Drawing.Size(1069, 136);
             this.pnlTopSide.TabIndex = 0;
             this.pnlTopSide.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlTopSide_MouseDown);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.pbUserImage);
+            this.panel1.Controls.Add(this.btnExit);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(869, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 136);
+            this.panel1.TabIndex = 8;
+            // 
+            // btnExit
+            // 
+            this.btnExit.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnExit.Location = new System.Drawing.Point(25, 91);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(171, 23);
+            this.btnExit.TabIndex = 4;
+            this.btnExit.Text = "button1";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // button2
+            // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button2.Location = new System.Drawing.Point(25, 115);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(171, 23);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "button1";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // lblTitle
             // 
@@ -78,7 +117,7 @@ namespace ProjectManager.Forms
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblTitle.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblTitle.Location = new System.Drawing.Point(510, 61);
+            this.lblTitle.Location = new System.Drawing.Point(523, 61);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(195, 25);
             this.lblTitle.TabIndex = 7;
@@ -103,59 +142,6 @@ namespace ProjectManager.Forms
             this.btnCloseChildForm.UseTransparentBackground = true;
             this.btnCloseChildForm.Click += new System.EventHandler(this.btnCloseChildForm_Click);
             // 
-            // button2
-            // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(25, 115);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(171, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "button1";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // btnExit
-            // 
-            this.btnExit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnExit.FlatAppearance.BorderSize = 0;
-            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnExit.Location = new System.Drawing.Point(25, 91);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(171, 23);
-            this.btnExit.TabIndex = 4;
-            this.btnExit.Text = "button1";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // guna2PictureBox1
-            // 
-            this.guna2PictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(18)))), ((int)(((byte)(43)))));
-            this.guna2PictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.guna2PictureBox1.Image = global::ProjectManager.Properties.Resources.Adsız;
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(200, 136);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.guna2PictureBox1.TabIndex = 3;
-            this.guna2PictureBox1.TabStop = false;
-            // 
-            // pbUserImage
-            // 
-            this.pbUserImage.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pbUserImage.ImageRotate = 0F;
-            this.pbUserImage.Location = new System.Drawing.Point(77, 21);
-            this.pbUserImage.Name = "pbUserImage";
-            this.pbUserImage.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.pbUserImage.Size = new System.Drawing.Size(64, 64);
-            this.pbUserImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbUserImage.TabIndex = 2;
-            this.pbUserImage.TabStop = false;
-            // 
             // guna2Panel2
             // 
             this.guna2Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(72)))), ((int)(((byte)(103)))));
@@ -164,11 +150,11 @@ namespace ProjectManager.Forms
             this.guna2Panel2.Controls.Add(this.btnCreateTask);
             this.guna2Panel2.Controls.Add(this.btnMyTasks);
             this.guna2Panel2.Controls.Add(this.btnAllTasks);
-            this.guna2Panel2.Controls.Add(this.guna2Button3);
+            this.guna2Panel2.Controls.Add(this.btnSettings);
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.guna2Panel2.Location = new System.Drawing.Point(0, 136);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(200, 513);
+            this.guna2Panel2.Size = new System.Drawing.Size(200, 576);
             this.guna2Panel2.TabIndex = 1;
             // 
             // btnProject
@@ -266,23 +252,24 @@ namespace ProjectManager.Forms
             this.btnAllTasks.Text = "All Tasks";
             this.btnAllTasks.Click += new System.EventHandler(this.btnAllTasks_Click);
             // 
-            // guna2Button3
+            // btnSettings
             // 
-            this.guna2Button3.Animated = true;
-            this.guna2Button3.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
-            this.guna2Button3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.guna2Button3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(62)))));
-            this.guna2Button3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button3.ForeColor = System.Drawing.Color.White;
-            this.guna2Button3.Location = new System.Drawing.Point(0, 457);
-            this.guna2Button3.Name = "guna2Button3";
-            this.guna2Button3.Size = new System.Drawing.Size(200, 56);
-            this.guna2Button3.TabIndex = 4;
-            this.guna2Button3.Text = "Settings";
+            this.btnSettings.Animated = true;
+            this.btnSettings.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
+            this.btnSettings.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSettings.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSettings.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSettings.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSettings.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnSettings.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(62)))));
+            this.btnSettings.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnSettings.ForeColor = System.Drawing.Color.White;
+            this.btnSettings.Location = new System.Drawing.Point(0, 520);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(200, 56);
+            this.btnSettings.TabIndex = 4;
+            this.btnSettings.Text = "Settings";
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // guna2Elipse1
             // 
@@ -295,7 +282,7 @@ namespace ProjectManager.Forms
             this.pnlMiddle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMiddle.Location = new System.Drawing.Point(200, 136);
             this.pnlMiddle.Name = "pnlMiddle";
-            this.pnlMiddle.Size = new System.Drawing.Size(878, 513);
+            this.pnlMiddle.Size = new System.Drawing.Size(869, 576);
             this.pnlMiddle.TabIndex = 2;
             // 
             // flowLayoutPanel2
@@ -305,38 +292,52 @@ namespace ProjectManager.Forms
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(878, 513);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(869, 576);
             this.flowLayoutPanel2.TabIndex = 2;
+            // 
+            // pbUserImage
+            // 
+            this.pbUserImage.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pbUserImage.ImageRotate = 0F;
+            this.pbUserImage.Location = new System.Drawing.Point(77, 21);
+            this.pbUserImage.Name = "pbUserImage";
+            this.pbUserImage.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.pbUserImage.Size = new System.Drawing.Size(64, 64);
+            this.pbUserImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbUserImage.TabIndex = 2;
+            this.pbUserImage.TabStop = false;
+            // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(18)))), ((int)(((byte)(43)))));
+            this.guna2PictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.guna2PictureBox1.Image = global::ProjectManager.Properties.Resources.Adsız;
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(200, 136);
+            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.guna2PictureBox1.TabIndex = 3;
+            this.guna2PictureBox1.TabStop = false;
             // 
             // userDashboard1
             // 
-            this.userDashboard1.CompletedTaskNumber = "28";
+            this.userDashboard1.CompletedTaskNumber = "3";
             this.userDashboard1.Location = new System.Drawing.Point(3, 3);
             this.userDashboard1.Name = "userDashboard1";
-            this.userDashboard1.ProjectCount = 28;
+            this.userDashboard1.ProjectCount = 3;
             this.userDashboard1.SelectDate = "All";
             this.userDashboard1.SelectProjectType = "All";
             this.userDashboard1.Size = new System.Drawing.Size(827, 477);
             this.userDashboard1.TabIndex = 1;
             this.userDashboard1.TitleTask = "All Tasks Count";
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.pbUserImage);
-            this.panel1.Controls.Add(this.btnExit);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(878, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 136);
-            this.panel1.TabIndex = 8;
-            // 
             // FormHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(67)))), ((int)(((byte)(86)))));
-            this.ClientSize = new System.Drawing.Size(1078, 649);
+            this.ClientSize = new System.Drawing.Size(1069, 712);
             this.Controls.Add(this.pnlMiddle);
             this.Controls.Add(this.guna2Panel2);
             this.Controls.Add(this.pnlTopSide);
@@ -346,12 +347,12 @@ namespace ProjectManager.Forms
             this.Load += new System.EventHandler(this.FormHome_Load);
             this.pnlTopSide.ResumeLayout(false);
             this.pnlTopSide.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.guna2Panel2.ResumeLayout(false);
             this.pnlMiddle.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -367,7 +368,7 @@ namespace ProjectManager.Forms
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private Guna.UI2.WinForms.Guna2CircleButton btnCloseChildForm;
         private System.Windows.Forms.Label lblTitle;
-        private Guna.UI2.WinForms.Guna2Button guna2Button3;
+        private Guna.UI2.WinForms.Guna2Button btnSettings;
         private System.Windows.Forms.Panel pnlMiddle;
         private Guna.UI2.WinForms.Guna2Button btnAllTasks;
         private Guna.UI2.WinForms.Guna2Button btnCreateTask;

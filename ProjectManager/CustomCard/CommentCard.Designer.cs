@@ -40,7 +40,7 @@ namespace ProjectManager.CustomCard
             this.lblCommentOwner.Location = new System.Drawing.Point(0, 0);
             this.lblCommentOwner.Name = "lblCommentOwner";
             this.lblCommentOwner.Padding = new System.Windows.Forms.Padding(5);
-            this.lblCommentOwner.Size = new System.Drawing.Size(423, 37);
+            this.lblCommentOwner.Size = new System.Drawing.Size(554, 37);
             this.lblCommentOwner.TabIndex = 0;
             this.lblCommentOwner.Text = "Comment Owner";
             this.lblCommentOwner.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -66,7 +66,7 @@ namespace ProjectManager.CustomCard
             this.txtComment.PasswordChar = '\0';
             this.txtComment.PlaceholderText = "Comment";
             this.txtComment.SelectedText = "";
-            this.txtComment.Size = new System.Drawing.Size(423, 68);
+            this.txtComment.Size = new System.Drawing.Size(554, 64);
             this.txtComment.TabIndex = 1;
             // 
             // CommentCard
@@ -78,7 +78,7 @@ namespace ProjectManager.CustomCard
             this.Controls.Add(this.lblCommentOwner);
             this.Margin = new System.Windows.Forms.Padding(20);
             this.Name = "CommentCard";
-            this.Size = new System.Drawing.Size(423, 105);
+            this.Size = new System.Drawing.Size(554, 101);
             this.ResumeLayout(false);
 
         }

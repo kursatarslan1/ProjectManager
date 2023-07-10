@@ -36,7 +36,9 @@ namespace ProjectManager.Forms
             // 
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(30);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(9, 10, 30, 30);
             this.flowLayoutPanel1.Size = new System.Drawing.Size(800, 450);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
@@ -48,7 +50,7 @@ namespace ProjectManager.Forms
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "FormMyTask";
-            this.Text = "FormMyTask";
+            this.Text = "My Task";
             this.Load += new System.EventHandler(this.FormMyTask_Load);
             this.ResumeLayout(false);
 

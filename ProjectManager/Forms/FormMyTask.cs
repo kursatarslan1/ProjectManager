@@ -17,38 +17,49 @@ namespace ProjectManager.Forms
         readonly string Username, Password;
         User user = new User();
         SqlHelper sqlHelper = new SqlHelper();
-        btnTask btnTask;
         Tasks task = new Tasks();
+        btnTask btnTask;
+        Comment comment = new Comment();
         public FormMyTask(string username, string password)
         {
             InitializeComponent();
             Username = username;
             Password = password;
             flowLayoutPanel1.AutoScroll = true;
-            btnTask = new btnTask(user);
-
+            btnTask = new btnTask(user); 
         }
         private void FormMyTask_Load(object sender, EventArgs e)
         {
             LoadTasks();
-            btnTask.OnShowTasks += BtnTask_OnShowTasks;
         }
 
         private void BtnTask_OnShowTasks(object source, Tasks t)
         {
-            //MessageBox.Show(""+t.TaskAuthor);
             task = t;
             OpenChildForm(new Forms.FormTaskDetail(t,user));
+
+            List<Comment> comments = new List<Comment>();
+            comments = sqlHelper.GetComment(task);
+
+            foreach (var item in comments)
+            {
+                CommentCard commentCard = new CommentCard();
+                comment.CommentContent = item.CommentContent;
+                comment.CommentTask = item.CommentTask;
+                comment.CommentOwner = item.CommentOwner;
+                commentCard.CommentOwner = comment.CommentOwner;
+                commentCard.Comment = comment.CommentContent;
+                flowLayoutPanel1.Controls.Add(commentCard);
+            }
+            flowLayoutPanel1.Dock = DockStyle.Fill;
         }
 
         private void OpenChildForm(Form childForm)
         {
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
-            //childForm.Dock = DockStyle.Fill;
             this.flowLayoutPanel1.Controls.Clear();
             this.flowLayoutPanel1.Controls.Add(childForm);
-            //this.flowLayoutPanel1.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
         }
@@ -59,11 +70,12 @@ namespace ProjectManager.Forms
             user = sqlHelper.GetData(user);
 
             List<Tasks> taskler = new List<Tasks>();
-            taskler = sqlHelper.GetTasks(user.Username);
+            taskler = sqlHelper.GetTasks(user.Username,"");
 
             foreach (var tasks in taskler)
             {
-                
+                btnTask btnTask = new btnTask(user);
+                btnTask.OnShowTasks += BtnTask_OnShowTasks;
                 btnTask.TaskProject = tasks.TaskProject;
                 btnTask.TaskContent = tasks.TaskName;
                 btnTask.TaskAuthor = "Task Author: " + tasks.TaskAuthor;

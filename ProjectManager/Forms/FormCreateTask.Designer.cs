@@ -47,12 +47,20 @@ namespace ProjectManager.Forms
             // 
             // createTask1
             // 
+            this.createTask1.Author = null;
             this.createTask1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(246)))), ((int)(((byte)(249)))));
             this.createTask1.Location = new System.Drawing.Point(9, 10);
             this.createTask1.Margin = new System.Windows.Forms.Padding(9, 10, 30, 30);
             this.createTask1.Name = "createTask1";
+            this.createTask1.SelectProject = "";
+            this.createTask1.SelectTaskComment = "";
+            this.createTask1.SelectTaskContent = "";
+            this.createTask1.SelectTaskDueDate = "1 Temmuz 2023 Cumartesi";
+            this.createTask1.SelectTaskOwner = "";
+            this.createTask1.SelectTaskPriority = "Low";
             this.createTask1.Size = new System.Drawing.Size(803, 464);
             this.createTask1.TabIndex = 0;
+            this.createTask1.TaskId = 0;
             // 
             // FormCreateTask
             // 
@@ -63,7 +71,7 @@ namespace ProjectManager.Forms
             this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormCreateTask";
-            this.Text = "FormCreateTask";
+            this.Text = "Create Task";
             this.Load += new System.EventHandler(this.FormCreateTask_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);

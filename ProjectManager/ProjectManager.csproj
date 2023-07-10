@@ -352,6 +352,12 @@
     <Compile Include="CustomCard\CommentCard.Designer.cs">
       <DependentUpon>CommentCard.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomCard\CreateProject.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomCard\CreateProject.Designer.cs">
+      <DependentUpon>CreateProject.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomCard\CreateTask.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -369,12 +375,6 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FormAllProject.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormAllProject.Designer.cs">
-      <DependentUpon>FormAllProject.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormAllTask.cs">
       <SubType>Form</SubType>
@@ -412,6 +412,12 @@
     <Compile Include="Forms\FormProject.Designer.cs">
       <DependentUpon>FormProject.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormSettings.Designer.cs">
+      <DependentUpon>FormSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormTaskDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -433,6 +439,9 @@
     <EmbeddedResource Include="CustomCard\CommentCard.resx">
       <DependentUpon>CommentCard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustomCard\CreateProject.resx">
+      <DependentUpon>CreateProject.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomCard\CreateTask.resx">
       <DependentUpon>CreateTask.cs</DependentUpon>
     </EmbeddedResource>
@@ -441,9 +450,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormAllProject.resx">
-      <DependentUpon>FormAllProject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormAllTask.resx">
       <DependentUpon>FormAllTask.cs</DependentUpon>
@@ -462,6 +468,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormProject.resx">
       <DependentUpon>FormProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormSettings.resx">
+      <DependentUpon>FormSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormTaskDetail.resx">
       <DependentUpon>FormTaskDetail.cs</DependentUpon>

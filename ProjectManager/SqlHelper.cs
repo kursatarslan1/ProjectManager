@@ -63,6 +63,7 @@ namespace ProjectManager
 
             while (dr.Read())
             {
+                user.UserId = Convert.ToInt32(dr["id"]);
                 user.Username = Convert.ToString(dr["Username"]);
                 user.Name = Convert.ToString(dr["Name"]);
                 user.LastName = Convert.ToString(dr["LastName"]);
@@ -78,53 +79,52 @@ namespace ProjectManager
 
         public void Create(User user)
         {
-            string createQuery = "INSERT INTO employee (username, Name, LastName,Role,Explaination,Birthday,Photo,PhoneNumber) VALUES (@username, @Name, @LastName, @Role, @Explaination, @Birthday, @Photo, @PhoneNumber)";
-            string createUserQuery = "INSERT INTO users (username, password) VALUES(@username,@password)";
-            SqlCommand cmd = new SqlCommand(createQuery, con);
-            SqlCommand cmd2 = new SqlCommand(createUserQuery, con);
-            cmd2.Parameters.AddWithValue("@username", user.Username);
-            cmd2.Parameters.AddWithValue("@password", "tpm123");
-            cmd.Parameters.AddWithValue("@username", user.Username);
-            cmd.Parameters.AddWithValue("@Name", user.Name);
-            cmd.Parameters.AddWithValue("@LastName", user.LastName);
-            cmd.Parameters.AddWithValue("@Role", user.Role);
-            cmd.Parameters.AddWithValue("@Explaination", user.Explaination);
-            cmd.Parameters.AddWithValue("@Birthday", user.Birthday);
-            cmd.Parameters.AddWithValue("@Photo", user.Photo);
-            cmd.Parameters.AddWithValue("@PhoneNumber", user.PhoneNumber);
-            con.Open();
-            //try
-            //{
-            //    cmd.ExecuteNonQuery();
-            //    SqlCommand cmnd = new SqlCommand(logQuery, con);
-            //    cmnd.Parameters.AddWithValue("IpAddress", GetLocalIPAddress());
-            //    cmnd.Parameters.AddWithValue("Process", "Create");
-            //    cmnd.Parameters.AddWithValue("ChangeDate", dateTime);
-            //    cmnd.Parameters.AddWithValue("Change", people.Id);
-            //    cmnd.ExecuteNonQuery();
-            //}
-            //catch (Exception ex)
-            //{
-            //    string error = ex.Message;
-            //    if (error.Contains("PRIMARY KEY"))
-            //        MessageBox.Show("Already Exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            //    else
-            //    {
-            //        MessageBox.Show("" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    }
-            //    con.Close();
-            //}
-            cmd.ExecuteNonQuery();
-            cmd2.ExecuteNonQuery();
-            con.Close();
+            try
+            {
+                string createQuery = "INSERT INTO employee (username, Name, LastName,Role,Explaination,Birthday,Photo,PhoneNumber) VALUES (@username, @Name, @LastName, @Role, @Explaination, @Birthday, @Photo, @PhoneNumber)";
+                string createUserQuery = "INSERT INTO users (username, password) VALUES(@username,@password)";
+                SqlCommand cmd = new SqlCommand(createQuery, con);
+                SqlCommand cmd2 = new SqlCommand(createUserQuery, con);
+                cmd2.Parameters.AddWithValue("@username", user.Username);
+                cmd2.Parameters.AddWithValue("@password", "tpm123");
+                cmd.Parameters.AddWithValue("@username", user.Username);
+                cmd.Parameters.AddWithValue("@Name", user.Name);
+                cmd.Parameters.AddWithValue("@LastName", user.LastName);
+                cmd.Parameters.AddWithValue("@Role", user.Role);
+                cmd.Parameters.AddWithValue("@Explaination", user.Explaination);
+                cmd.Parameters.AddWithValue("@Birthday", user.Birthday);
+                cmd.Parameters.AddWithValue("@Photo", user.Photo);
+                cmd.Parameters.AddWithValue("@PhoneNumber", user.PhoneNumber);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                cmd2.ExecuteNonQuery();
+                con.Close();
+                MessageBox.Show("Added Successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                con.Close();
+                if (ex.ToString().Contains("duplicate"))
+                {
+                    MessageBox.Show("User already exist.","Warning",MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                    MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        public List<Tasks> GetTasks(string user)
+        public List<Tasks> GetTasks(string user, string OperationType)
         {
             con.Close();
             con.Open();
-            cmd = new SqlCommand("SELECT * FROM Tasks WHERE TASK_OWNER=@TASK_OWNER AND NOT TASK_STATUS = 'Done'", con);
-            cmd.Parameters.AddWithValue("@TASK_OWNER", user);
+            if(OperationType == "407")
+                cmd = new SqlCommand("SELECT * FROM Tasks", con);
+            else
+            {
+                cmd = new SqlCommand("SELECT * FROM Tasks WHERE TASK_OWNER=@TASK_OWNER AND NOT TASK_STATUS = 'Done'", con);
+                cmd.Parameters.AddWithValue("@TASK_OWNER", user);
+            }
+                
             SqlDataReader dr = cmd.ExecuteReader();
             List<Tasks> tasks = new List<Tasks>();
             while (dr.Read())
@@ -192,6 +192,7 @@ namespace ProjectManager
         public int GetDoneTasks(string stat)
         {
             int count;
+            con.Close();
             if (stat == "All")
             {
                 con.Open();
@@ -237,7 +238,8 @@ namespace ProjectManager
                 con.Open();
                 cmd.ExecuteNonQuery();
                 cmd2.ExecuteNonQuery();
-                cmd3.ExecuteNonQuery();
+                if(!string.IsNullOrEmpty(task.TaskComment))
+                    cmd3.ExecuteNonQuery();
                 con.Close();
                 MessageBox.Show("Task created Successfully.","Info",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 return true;
@@ -270,7 +272,8 @@ namespace ProjectManager
                 cmd.Parameters.AddWithValue("@TASK_OWNER", task.TaskOwner);
                 cmd.Parameters.AddWithValue("@TASK_PROJECT", task.TaskProject);
                 con.Open();
-                cmd2.ExecuteNonQuery();
+                if (!string.IsNullOrEmpty(task.TaskComment))
+                    cmd2.ExecuteNonQuery();
                 cmd.ExecuteNonQuery();
                 con.Close();
                 MessageBox.Show("Task Updated Successfully.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -307,81 +310,174 @@ namespace ProjectManager
 
         public DataTable LoadData()
         {
-            string query = "SELECT * FROM Tasks";
-            using (con)
+            try
             {
-                con.Open();
-                using (DataTable dt = new DataTable("task"))
+                string query = "SELECT * FROM Tasks";
+                using (con)
                 {
-                    SqlDataAdapter adptr = new SqlDataAdapter(query, con);
-                    adptr.Fill(dt);
-                    con.Close();
-                    return dt;
+                    con.Open();
+                    using (DataTable dt = new DataTable("task"))
+                    {
+                        SqlDataAdapter adptr = new SqlDataAdapter(query, con);
+                        adptr.Fill(dt);
+                        con.Close();
+                        return dt;
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                con.Close();
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+
         }
 
         public void CreateProject(Projects projects)
         {
-            string query = "INSERT INTO Project(PROJECT_NAME, TASK_COUNT,PROJECT_CONTENT) VALUES(@PROJECT_NAME, @TASK_COUNT,@PROJECT_CONTENT)";
-            SqlCommand cmd = new SqlCommand(query, con);
-            cmd.Parameters.AddWithValue("@PROJECT_NAME", projects.ProjectName);
-            cmd.Parameters.AddWithValue("@TASK_COUNT", Convert.ToInt32(projects.TaskCount));
-            cmd.Parameters.AddWithValue("@PROJECT_CONTENT", projects.ProjectContent);
-            con.Open();
-            cmd.ExecuteNonQuery();
-            con.Close();
+            try
+            {
+                string query = "INSERT INTO Project(PROJECT_NAME, TASK_COUNT,PROJECT_CONTENT) VALUES(@PROJECT_NAME, @TASK_COUNT,@PROJECT_CONTENT)";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@PROJECT_NAME", projects.ProjectName);
+                cmd.Parameters.AddWithValue("@TASK_COUNT", Convert.ToInt32(projects.TaskCount));
+                cmd.Parameters.AddWithValue("@PROJECT_CONTENT", projects.ProjectContent);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+                MessageBox.Show("Created Successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                con.Close();
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        public Tasks GetTaskDetail(string TaskContent)
+        public Tasks GetTaskDetail(string TaskContent,string OpreationType)
         {
-            con.Open();
-            string query = "SELECT * FROM Tasks WHERE TASK_NAME = @TASK_NAME";
-            SqlCommand cmd = new SqlCommand(query, con);
-            cmd.Parameters.AddWithValue("@TASK_NAME", TaskContent);
-            SqlDataReader reader = cmd.ExecuteReader();
-            Tasks task = new Tasks();
-            while (reader.Read())
+            string query = "";
+            try
             {
-                task.TaskId = Convert.ToInt32(reader["TASK_ID"]);
-                task.TaskName = Convert.ToString(reader["TASK_NAME"]);
-                task.TaskCreateDate = Convert.ToDateTime(reader["TASK_CREATE_DATE"]);
-                task.TaskAuthor = Convert.ToString(reader["TASK_AUTHOR"]);
-                task.TaskStatus = Convert.ToString(reader["TASK_STATUS"]);
-                task.TaskDueDate = Convert.ToDateTime(reader["TASK_DUE_DATE"]);
-                task.TaskPriority = Convert.ToString(reader["TASK_PRIORITY"]);
-                task.TaskOwner = Convert.ToString(reader["TASK_OWNER"]);
-                task.TaskProject = Convert.ToString(reader["TASK_PROJECT"]);
+                con.Open();
+                if (OpreationType == "406")
+                    query = "SELECT * FROM Tasks WHERE TASK_NAME = @TASK_NAME";
+                else
+                    query = "SELECT * FROM Tasks WHERE TASK_PROJECT = @TASK_PROJECT AND NOT TASK_STATUS = 'DONE'";
 
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@TASK_NAME", TaskContent);
+                SqlDataReader reader = cmd.ExecuteReader();
+                Tasks task = new Tasks();
+                while (reader.Read())
+                {
+                    task.TaskId = Convert.ToInt32(reader["TASK_ID"]);
+                    task.TaskName = Convert.ToString(reader["TASK_NAME"]);
+                    task.TaskCreateDate = Convert.ToDateTime(reader["TASK_CREATE_DATE"]);
+                    task.TaskAuthor = Convert.ToString(reader["TASK_AUTHOR"]);
+                    task.TaskStatus = Convert.ToString(reader["TASK_STATUS"]);
+                    task.TaskDueDate = Convert.ToDateTime(reader["TASK_DUE_DATE"]);
+                    task.TaskPriority = Convert.ToString(reader["TASK_PRIORITY"]);
+                    task.TaskOwner = Convert.ToString(reader["TASK_OWNER"]);
+                    task.TaskProject = Convert.ToString(reader["TASK_PROJECT"]);
+
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+                con.Close();
+                return task;
             }
-            reader.Close();
-            cmd.ExecuteNonQuery();
-            
-            con.Close();
-            return task;
+            catch (Exception ex)
+            {
+                con.Close();
+                MessageBox.Show(ex.ToString() + "\nCouldn't get task details.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
         }
 
         public List<Comment> GetComment(Tasks tasks)
         {
-            con.Open();
-            cmd = new SqlCommand("SELECT * FROM Comments WHERE COMMENT_TASK=@TASK_NAME", con);
-            cmd.Parameters.AddWithValue("@TASK_NAME", tasks.TaskName);
-            SqlDataReader reader = cmd.ExecuteReader();
-            List<Comment> comments = new List<Comment>();
-
-            while (reader.Read())
+            try
             {
-                comments.Add(new Comment
+                con.Open();
+                cmd = new SqlCommand("SELECT * FROM Comments WHERE COMMENT_TASK=@TASK_NAME", con);
+                cmd.Parameters.AddWithValue("@TASK_NAME", tasks.TaskName);
+                SqlDataReader reader = cmd.ExecuteReader();
+                List<Comment> comments = new List<Comment>();
+
+                while (reader.Read())
                 {
-                    CommentContent = Convert.ToString(reader["COMMENT"]),
-                    CommentTask = Convert.ToString(reader["COMMENT_TASK"]),
-                    CommentOwner = Convert.ToString(reader["COMMENT_OWNER"])
-                });
+                    comments.Add(new Comment
+                    {
+                        CommentContent = Convert.ToString(reader["COMMENT"]),
+                        CommentTask = Convert.ToString(reader["COMMENT_TASK"]),
+                        CommentOwner = Convert.ToString(reader["COMMENT_OWNER"])
+                    });
+                }
+                reader.Close();
+                con.Close();
+                return comments;
             }
-            reader.Close();
-            con.Close();
-            return comments;
+            catch (Exception ex)
+            {
+                con.Close();
+                MessageBox.Show(ex.ToString()+"\nCouldn't get comments.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
         }
 
+        public void UpdateEmployee(User user)
+        {
+            try
+            {
+                string updateQuery = "UPDATE employee SET username=@username, Name=@Name, LastName=@LastName, Role=@Role, Explaination=@Explaination, Birthday=@Birthday, Photo=@Photo, PhoneNumber=@PhoneNumber WHERE id=@id";
+                string update2Query = "UPDATE users SET password=@password WHERE username=@username";
+                cmd = new SqlCommand(updateQuery, con);
+                SqlCommand cmd2 = new SqlCommand(update2Query, con);
+                cmd2.Parameters.AddWithValue("@password", user.Password);
+                cmd2.Parameters.AddWithValue("@username", user.Username);
+                cmd.Parameters.AddWithValue("@id", user.UserId);
+                cmd.Parameters.AddWithValue("@username", user.Username);
+                cmd.Parameters.AddWithValue("@Name", user.Name);
+                cmd.Parameters.AddWithValue("@LastName", user.LastName);
+                cmd.Parameters.AddWithValue("@Role", user.Role);
+                cmd.Parameters.AddWithValue("@Explaination", user.Explaination);
+                cmd.Parameters.AddWithValue("@Birthday", user.Birthday);
+                cmd.Parameters.AddWithValue("@Photo", user.Photo);
+                cmd.Parameters.AddWithValue("@PhoneNumber", user.PhoneNumber);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                cmd2.ExecuteNonQuery();
+                con.Close();
+                MessageBox.Show("Updated Successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                con.Close();
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        public void DeleteEmployee(User user)
+        {
+            try
+            {
+                string deleteQuery = "DELETE FROM employee WHERE username=@username";
+                cmd = new SqlCommand(deleteQuery, con);
+                cmd.Parameters.AddWithValue("@username", user.Username);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+                MessageBox.Show("Deleted Successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                con.Close();
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
     }
 }
